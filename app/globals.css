@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme inline {
+}
+
+@layer utilities {
+	.input {
+		@apply border-b border-black/10 pb-1 outline-none
+	}
+
+	.pointer {
+		@apply cursor-pointer
+	}
+}

@@ -31,14 +31,13 @@ export default function Form() {
 		}
 
 		try {
-			const formData = new FormData()
-			formData.append("email", email)
-			formData.append("password", password)
-
-			await credentialsSignIn(formData)
+			await credentialsSignIn(email, password)
+			window.location.href = "/"
 		}
 		catch(e) {
-			console.log(e)
+			const err: Error = e as Error
+
+			alert(err.message)
 		}
 	}
 

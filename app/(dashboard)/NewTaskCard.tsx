@@ -5,6 +5,7 @@ import axios from "axios"
 import { useNewTaskStore } from "@/store/newTask"
 import { useState } from "react"
 import { IoCloseSharp, IoCheckmarkSharp } from "react-icons/io5"
+import { useTaskStore } from "@/store/task"
 
 const inputClass = "border-b border-white w-[15%] outline-none text-white p-2"
 
@@ -15,6 +16,8 @@ export default function NewTaskCard() {
 		title: "",
 		loading: false
 	})
+
+	const { tasks, setTasks } = useTaskStore()
 	const { isAddingNewTask, inactive } = useNewTaskStore()
 
 	if(!isAddingNewTask) return null
@@ -43,6 +46,8 @@ export default function NewTaskCard() {
 				}
 			)
 
+			const newTask = res?.data?.data
+
 			setState(prev => ({
 				...prev,
 				assignedTo: "",
@@ -50,7 +55,20 @@ export default function NewTaskCard() {
 				title: ""
 			}))
 
-			alert(res.data?.message)
+			const tasksHolder: Task[] = [...tasks]
+			tasksHolder.push({
+				assignedTo: state.assignedTo,
+				createdAt: newTask?.createdAt,
+				description: state.description,
+				id: newTask?.id,
+				status: newTask.status,
+				title: state.title,
+				token: newTask.token
+			})
+
+			setTasks(tasksHolder.reverse())
+
+			alert("task created successfully")
 		}
 		catch(e) {
 			console.log(`Error in client: ${e}`)
@@ -66,7 +84,7 @@ export default function NewTaskCard() {
 
 	const Text = ({ text }: { text: string }) => <p className="text-white w-[10%] ml-1 pl-2 flex items-center">{text}</p>
 
-	return <div className="flex">
+	return <div className="flex mb-3">
 		<input value={state.title} onChange={handleChange} name="title" type="text" placeholder="Title" className={inputClass} />
 		<input value={state.description} onChange={handleChange} name="description" type="text" placeholder="Description" className={`ml-1 ${inputClass}`} />
 		<input

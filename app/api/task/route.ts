@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
 
 		if(!description || !title) return BadRequest()
 
-		await prisma.task.create({
+		const newTask = await prisma.task.create({
 			data: {
 				assignedTo,
 				description,
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
 			}
 		})
 
-		return Inserted("task created successfully.")
+		return Inserted(newTask)
 	}
 	catch(e) {
 		console.log(`Error in Post Task API Endpoint: ${e}`)

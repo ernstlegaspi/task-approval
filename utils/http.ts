@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 
 export const OK = (data: any) => NextResponse.json({ data }, { status: 200 })
-export const Inserted = (message: string) => NextResponse.json({ message }, { status: 201 })
+export const Inserted = (data: any) => NextResponse.json({ data }, { status: 201 })
 
 export const BadRequest = () => NextResponse.json({ message: "Bad Request" }, { status: 400 })
 export const NotFound = () => NextResponse.json({ message: "Not Found" }, { status: 404 })

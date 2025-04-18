@@ -6,7 +6,11 @@ import { NextRequest, NextResponse } from "next/server"
 
 export async function GET(req: NextRequest) {
 	try {
-		const tasks = await prisma.task.findMany()
+		const tasks = await prisma.task.findMany({
+			orderBy: {
+				createdAt: "desc"
+			}
+		})
 
 		return NextResponse.json({ tasks })
 	}
@@ -18,7 +22,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
 	try {
 		const body = await req.json()
-		const { assignedTo, description, title } = body as TaskCardProps
+		const { assignedTo, description, title } = body as Task
 		const token = v4()
 		const tokenExpiration = new Date(Date.now() + 1000 * 60 * 60 * 24)
 		console.log(`Token Expiration: ${tokenExpiration}`)

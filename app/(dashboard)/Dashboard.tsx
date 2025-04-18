@@ -1,5 +1,6 @@
 import AddTaskButton from "./AddTaskButton"
 import NewTaskCard from "./NewTaskCard"
+import Tasks from "./Tasks"
 
 export default function Dashboard() {
 	return <div className="w-full bg-black h-[100vh]">
@@ -12,12 +13,13 @@ export default function Dashboard() {
 					<div className=" py-2 w-[15%] ml-1 pl-2">Task Description</div>
 					<div className=" py-2 w-[15%] ml-1 pl-2">Assigned To</div>
 					<div className=" py-2 w-[10%] ml-1 pl-2">Status</div>
-					<div className=" py-2 w-[10%] ml-1 pl-2">Created Date</div>
+					<div className=" py-2 w-[10%] ml-1 pl-2">Date Created</div>
 					<div className=" py-2 w-[10%] ml-1 pl-2">Token</div>
-					<div className=" py-2 w-[5%]"></div>
+					<div className=" py-2 w-[5%]">Action</div>
 				</div>
 
 				<NewTaskCard />
+				<Tasks />
 			</div>
 		</div>
 	</div>

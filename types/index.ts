@@ -1,7 +1,9 @@
-type TaskCardProps = {
+type Task = {
+	id: string
 	assignedTo: string
-	createdDate: string
+	createdAt: Date
 	description: string
 	status: string
 	title: string
+	token: string
 }

@@ -131,8 +131,14 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.TaskScalarFieldEnum = {
   id: 'id',
+  assignedTo: 'assignedTo',
   description: 'description',
-  title: 'title'
+  status: 'status',
+  title: 'title',
+  token: 'token',
+  tokenExpiration: 'tokenExpiration',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {
@@ -190,7 +196,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.TaskStatus = exports.$Enums.TaskStatus = {
+  APPROVED: 'APPROVED',
+  PENDING: 'PENDING',
+  REJECTED: 'REJECTED'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',

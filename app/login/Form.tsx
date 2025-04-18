@@ -50,6 +50,6 @@ export default function Form() {
 		<br />
 		<input value={state.password} onChange={handleChange} className="input my-3" placeholder="Password" name="password" type="password" />
 		<br />
-		<button className="pointer bg-[#0e0e0e] text-white w-full py-2 rounded-[2px] transition-all border border-[#0e0e0e] hover:bg-white hover:text-black" type="submit">Login</button>
+		<button className="pointer bg-black text-white w-full py-2 rounded-[2px] transition-all border border-black hover:bg-white hover:text-black" type="submit">Login</button>
 	</form>
 }

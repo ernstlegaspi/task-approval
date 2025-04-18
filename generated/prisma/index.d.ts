@@ -45,6 +45,24 @@ export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTok
 export type Authenticator = $Result.DefaultSelection<Prisma.$AuthenticatorPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const TaskStatus: {
+  APPROVED: 'APPROVED',
+  PENDING: 'PENDING',
+  REJECTED: 'REJECTED'
+};
+
+export type TaskStatus = (typeof TaskStatus)[keyof typeof TaskStatus]
+
+}
+
+export type TaskStatus = $Enums.TaskStatus
+
+export const TaskStatus: typeof $Enums.TaskStatus
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -2562,40 +2580,76 @@ export namespace Prisma {
 
   export type TaskMinAggregateOutputType = {
     id: string | null
+    assignedTo: string | null
     description: string | null
+    status: $Enums.TaskStatus | null
     title: string | null
+    token: string | null
+    tokenExpiration: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type TaskMaxAggregateOutputType = {
     id: string | null
+    assignedTo: string | null
     description: string | null
+    status: $Enums.TaskStatus | null
     title: string | null
+    token: string | null
+    tokenExpiration: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type TaskCountAggregateOutputType = {
     id: number
+    assignedTo: number
     description: number
+    status: number
     title: number
+    token: number
+    tokenExpiration: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
   export type TaskMinAggregateInputType = {
     id?: true
+    assignedTo?: true
     description?: true
+    status?: true
     title?: true
+    token?: true
+    tokenExpiration?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type TaskMaxAggregateInputType = {
     id?: true
+    assignedTo?: true
     description?: true
+    status?: true
     title?: true
+    token?: true
+    tokenExpiration?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type TaskCountAggregateInputType = {
     id?: true
+    assignedTo?: true
     description?: true
+    status?: true
     title?: true
+    token?: true
+    tokenExpiration?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -2673,8 +2727,14 @@ export namespace Prisma {
 
   export type TaskGroupByOutputType = {
     id: string
+    assignedTo: string
     description: string
+    status: $Enums.TaskStatus
     title: string
+    token: string
+    tokenExpiration: Date
+    createdAt: Date
+    updatedAt: Date
     _count: TaskCountAggregateOutputType | null
     _min: TaskMinAggregateOutputType | null
     _max: TaskMaxAggregateOutputType | null
@@ -2696,37 +2756,67 @@ export namespace Prisma {
 
   export type TaskSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    assignedTo?: boolean
     description?: boolean
+    status?: boolean
     title?: boolean
+    token?: boolean
+    tokenExpiration?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["task"]>
 
   export type TaskSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    assignedTo?: boolean
     description?: boolean
+    status?: boolean
     title?: boolean
+    token?: boolean
+    tokenExpiration?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["task"]>
 
   export type TaskSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    assignedTo?: boolean
     description?: boolean
+    status?: boolean
     title?: boolean
+    token?: boolean
+    tokenExpiration?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["task"]>
 
   export type TaskSelectScalar = {
     id?: boolean
+    assignedTo?: boolean
     description?: boolean
+    status?: boolean
     title?: boolean
+    token?: boolean
+    tokenExpiration?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type TaskOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "title", ExtArgs["result"]["task"]>
+  export type TaskOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "assignedTo" | "description" | "status" | "title" | "token" | "tokenExpiration" | "createdAt" | "updatedAt", ExtArgs["result"]["task"]>
 
   export type $TaskPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Task"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      assignedTo: string
       description: string
+      status: $Enums.TaskStatus
       title: string
+      token: string
+      tokenExpiration: Date
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["task"]>
     composites: {}
   }
@@ -3151,8 +3241,14 @@ export namespace Prisma {
    */
   interface TaskFieldRefs {
     readonly id: FieldRef<"Task", 'String'>
+    readonly assignedTo: FieldRef<"Task", 'String'>
     readonly description: FieldRef<"Task", 'String'>
+    readonly status: FieldRef<"Task", 'TaskStatus'>
     readonly title: FieldRef<"Task", 'String'>
+    readonly token: FieldRef<"Task", 'String'>
+    readonly tokenExpiration: FieldRef<"Task", 'DateTime'>
+    readonly createdAt: FieldRef<"Task", 'DateTime'>
+    readonly updatedAt: FieldRef<"Task", 'DateTime'>
   }
     
 
@@ -7904,8 +8000,14 @@ export namespace Prisma {
 
   export const TaskScalarFieldEnum: {
     id: 'id',
+    assignedTo: 'assignedTo',
     description: 'description',
-    title: 'title'
+    status: 'status',
+    title: 'title',
+    token: 'token',
+    tokenExpiration: 'tokenExpiration',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof TaskScalarFieldEnum]
@@ -8018,6 +8120,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'TaskStatus'
+   */
+  export type EnumTaskStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TaskStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'TaskStatus[]'
+   */
+  export type ListEnumTaskStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TaskStatus[]'>
     
 
 
@@ -8145,14 +8261,26 @@ export namespace Prisma {
     OR?: TaskWhereInput[]
     NOT?: TaskWhereInput | TaskWhereInput[]
     id?: StringFilter<"Task"> | string
+    assignedTo?: StringFilter<"Task"> | string
     description?: StringFilter<"Task"> | string
+    status?: EnumTaskStatusFilter<"Task"> | $Enums.TaskStatus
     title?: StringFilter<"Task"> | string
+    token?: StringFilter<"Task"> | string
+    tokenExpiration?: DateTimeFilter<"Task"> | Date | string
+    createdAt?: DateTimeFilter<"Task"> | Date | string
+    updatedAt?: DateTimeFilter<"Task"> | Date | string
   }
 
   export type TaskOrderByWithRelationInput = {
     id?: SortOrder
+    assignedTo?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     title?: SortOrder
+    token?: SortOrder
+    tokenExpiration?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type TaskWhereUniqueInput = Prisma.AtLeast<{
@@ -8160,14 +8288,26 @@ export namespace Prisma {
     AND?: TaskWhereInput | TaskWhereInput[]
     OR?: TaskWhereInput[]
     NOT?: TaskWhereInput | TaskWhereInput[]
+    assignedTo?: StringFilter<"Task"> | string
     description?: StringFilter<"Task"> | string
+    status?: EnumTaskStatusFilter<"Task"> | $Enums.TaskStatus
     title?: StringFilter<"Task"> | string
+    token?: StringFilter<"Task"> | string
+    tokenExpiration?: DateTimeFilter<"Task"> | Date | string
+    createdAt?: DateTimeFilter<"Task"> | Date | string
+    updatedAt?: DateTimeFilter<"Task"> | Date | string
   }, "id">
 
   export type TaskOrderByWithAggregationInput = {
     id?: SortOrder
+    assignedTo?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     title?: SortOrder
+    token?: SortOrder
+    tokenExpiration?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: TaskCountOrderByAggregateInput
     _max?: TaskMaxOrderByAggregateInput
     _min?: TaskMinOrderByAggregateInput
@@ -8178,8 +8318,14 @@ export namespace Prisma {
     OR?: TaskScalarWhereWithAggregatesInput[]
     NOT?: TaskScalarWhereWithAggregatesInput | TaskScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Task"> | string
+    assignedTo?: StringWithAggregatesFilter<"Task"> | string
     description?: StringWithAggregatesFilter<"Task"> | string
+    status?: EnumTaskStatusWithAggregatesFilter<"Task"> | $Enums.TaskStatus
     title?: StringWithAggregatesFilter<"Task"> | string
+    token?: StringWithAggregatesFilter<"Task"> | string
+    tokenExpiration?: DateTimeWithAggregatesFilter<"Task"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Task"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Task"> | Date | string
   }
 
   export type AccountWhereInput = {
@@ -8549,44 +8695,86 @@ export namespace Prisma {
 
   export type TaskCreateInput = {
     id?: string
+    assignedTo: string
     description: string
+    status?: $Enums.TaskStatus
     title: string
+    token: string
+    tokenExpiration: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TaskUncheckedCreateInput = {
     id?: string
+    assignedTo: string
     description: string
+    status?: $Enums.TaskStatus
     title: string
+    token: string
+    tokenExpiration: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TaskUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    assignedTo?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    status?: EnumTaskStatusFieldUpdateOperationsInput | $Enums.TaskStatus
     title?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    tokenExpiration?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TaskUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    assignedTo?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    status?: EnumTaskStatusFieldUpdateOperationsInput | $Enums.TaskStatus
     title?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    tokenExpiration?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TaskCreateManyInput = {
     id?: string
+    assignedTo: string
     description: string
+    status?: $Enums.TaskStatus
     title: string
+    token: string
+    tokenExpiration: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TaskUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    assignedTo?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    status?: EnumTaskStatusFieldUpdateOperationsInput | $Enums.TaskStatus
     title?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    tokenExpiration?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TaskUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    assignedTo?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    status?: EnumTaskStatusFieldUpdateOperationsInput | $Enums.TaskStatus
     title?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    tokenExpiration?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AccountCreateInput = {
@@ -9060,22 +9248,57 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type EnumTaskStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.TaskStatus | EnumTaskStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TaskStatus[] | ListEnumTaskStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TaskStatus[] | ListEnumTaskStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTaskStatusFilter<$PrismaModel> | $Enums.TaskStatus
+  }
+
   export type TaskCountOrderByAggregateInput = {
     id?: SortOrder
+    assignedTo?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     title?: SortOrder
+    token?: SortOrder
+    tokenExpiration?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type TaskMaxOrderByAggregateInput = {
     id?: SortOrder
+    assignedTo?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     title?: SortOrder
+    token?: SortOrder
+    tokenExpiration?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type TaskMinOrderByAggregateInput = {
     id?: SortOrder
+    assignedTo?: SortOrder
     description?: SortOrder
+    status?: SortOrder
     title?: SortOrder
+    token?: SortOrder
+    tokenExpiration?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumTaskStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TaskStatus | EnumTaskStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TaskStatus[] | ListEnumTaskStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TaskStatus[] | ListEnumTaskStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTaskStatusWithAggregatesFilter<$PrismaModel> | $Enums.TaskStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTaskStatusFilter<$PrismaModel>
+    _max?: NestedEnumTaskStatusFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -9446,6 +9669,10 @@ export namespace Prisma {
     deleteMany?: AuthenticatorScalarWhereInput | AuthenticatorScalarWhereInput[]
   }
 
+  export type EnumTaskStatusFieldUpdateOperationsInput = {
+    set?: $Enums.TaskStatus
+  }
+
   export type UserCreateNestedOneWithoutAccountsInput = {
     create?: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
     connectOrCreate?: UserCreateOrConnectWithoutAccountsInput
@@ -9640,6 +9867,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumTaskStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.TaskStatus | EnumTaskStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TaskStatus[] | ListEnumTaskStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TaskStatus[] | ListEnumTaskStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTaskStatusFilter<$PrismaModel> | $Enums.TaskStatus
+  }
+
+  export type NestedEnumTaskStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.TaskStatus | EnumTaskStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.TaskStatus[] | ListEnumTaskStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.TaskStatus[] | ListEnumTaskStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumTaskStatusWithAggregatesFilter<$PrismaModel> | $Enums.TaskStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumTaskStatusFilter<$PrismaModel>
+    _max?: NestedEnumTaskStatusFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {

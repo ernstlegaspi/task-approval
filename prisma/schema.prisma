@@ -14,6 +14,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum TaskStatus {
+  APPROVED
+  PENDING
+  REJECTED
+}
+
 model User {
   id            String    @id @default(cuid())
   birthday      DateTime?
@@ -30,12 +36,23 @@ model User {
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
   Authenticator Authenticator[]
+
+  tasks Task[]
 }
 
 model Task {
-  id          String @id @default(cuid())
-  description String
-  title       String
+  id              String     @id @default(cuid())
+  assignedTo      String
+  description     String
+  status          TaskStatus @default(PENDING)
+  title           String
+  token           String
+  tokenExpiration DateTime
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Account {

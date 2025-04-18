@@ -13,23 +13,28 @@ export default function NewTaskCard() {
 		assignedTo: "",
 		description: "",
 		title: "",
+		loading: false
 	})
 	const { isAddingNewTask, inactive } = useNewTaskStore()
 
 	if(!isAddingNewTask) return null
 
-	const setValue = (key: string, value: string) => {
+	const setValue = (key: string, value: string | boolean) => {
 		setState(prev => ({ ...prev, [key]: value }))
 	}
 
 	const handleAddTask = async () => {
+		if(state.loading) return
+
 		try {
+			setValue("loading", true)
+
 			const res = await axios.post(
 				"/api/task",
 				{
 					assignedTo: state.assignedTo,
 					description: state.description,
-					title: state.title,
+					title: state.title
 				},
 				{
 					headers: {
@@ -38,10 +43,20 @@ export default function NewTaskCard() {
 				}
 			)
 
+			setState(prev => ({
+				...prev,
+				assignedTo: "",
+				description: "",
+				title: ""
+			}))
+
 			alert(res.data?.message)
 		}
 		catch(e) {
 			console.log(`Error in client: ${e}`)
+		}
+		finally {
+			setValue("loading", false)
 		}
 	}
 
@@ -57,6 +72,7 @@ export default function NewTaskCard() {
 		<input
 			placeholder="None"
 			name="assignedTo"
+			value={state.assignedTo}
 			onChange={handleChange}
 			className="
 				focus:border-white text-white py-1 ml-1 w-[15%] flex items-center pl-2

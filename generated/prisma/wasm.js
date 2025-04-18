@@ -138,7 +138,8 @@ exports.Prisma.TaskScalarFieldEnum = {
   token: 'token',
   tokenExpiration: 'tokenExpiration',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  userId: 'userId'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {

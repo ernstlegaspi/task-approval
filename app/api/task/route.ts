@@ -4,6 +4,17 @@ import { prisma } from "@/utils"
 import { BadRequest, Inserted } from "@/utils/http"
 import { NextRequest, NextResponse } from "next/server"
 
+export async function GET(req: NextRequest) {
+	try {
+		const tasks = await prisma.task.findMany()
+
+		return NextResponse.json({ tasks })
+	}
+	catch(e) {
+		return NextResponse.json({ message: e }, { status: 500 })
+	}
+}
+
 export async function POST(req: NextRequest) {
 	try {
 		const body = await req.json()

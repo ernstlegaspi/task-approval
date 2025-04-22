@@ -71,6 +71,8 @@ export default function Form() {
 				email,
 				password
 			})
+
+			toast("Registered successfully.")
 		}
 		catch(e) {
 			const err: Error = e as Error

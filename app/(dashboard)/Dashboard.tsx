@@ -1,11 +1,15 @@
 import AddTaskButton from "./AddTaskButton"
+import LogoutButton from "./LogoutButton"
 import NewTaskCard from "./NewTaskCard"
 import Tasks from "./Tasks"
 
 export default function Dashboard() {
 	return <div className="w-full bg-black h-[100vh]">
 		<div className="w-[95%] mx-auto pt-12 overflow-x-scroll">
-			<AddTaskButton />
+			<div className="w-full flex justify-between items-center">
+				<AddTaskButton />
+				<LogoutButton />
+			</div>
 
 			<div className="rounded-sm bg-[#1a1a1a] p-3 mt-4">
 				<div className="flex text-white">

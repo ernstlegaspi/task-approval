@@ -55,7 +55,7 @@ export default function NewTaskCard() {
 				title: ""
 			}))
 
-			const tasksHolder: Task[] = [...tasks]
+			const tasksHolder: Task[] = [...tasks.reverse()]
 			tasksHolder.push({
 				assignedTo: state.assignedTo,
 				createdAt: newTask?.createdAt,

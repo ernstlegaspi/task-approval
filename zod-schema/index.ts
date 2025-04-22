@@ -9,3 +9,9 @@ export const loginSchema = z.object({
 	.email(),
 	password: z.string().min(5, { message: "Password must be 5 characters long." })
 })
+
+export const updateTaskSchema = z.object({
+	id: z.string().min(1),
+	description: z.string().min(1),
+	title: z.string().min(1)
+})

@@ -28,3 +28,46 @@ export async function GET(req: NextRequest, { params }: { params: { token: strin
 		return ServerError(e as Error)
 	}
 }
+
+export async function PUT(req: NextRequest) {
+	try {
+		const body = await req.json()
+		const { status, token } = body
+
+		if(!status || !token) return BadRequest()
+
+		await prisma.task.update({
+			where: {
+				token
+			},
+			data: {
+				status
+			}
+		})
+
+		return OK("status updated")
+	}
+	catch(e) {
+		return ServerError(e as Error)
+	}
+}
+
+export async function DELETE(req: NextRequest, { params }: { params: { token: string } }) {
+	try {
+		const token = params.token
+
+		if(!token) return BadRequest()
+
+		await prisma.task.delete({
+			where: {
+				token
+			}
+		})
+
+		return OK("task deleted")
+	}
+	catch(e) {
+		console.log(e)
+		return ServerError(e as Error)
+	}
+}

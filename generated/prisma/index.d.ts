@@ -50,6 +50,7 @@ export type Authenticator = $Result.DefaultSelection<Prisma.$AuthenticatorPayloa
 export namespace $Enums {
   export const TaskStatus: {
   APPROVED: 'APPROVED',
+  EXPIRED: 'EXPIRED',
   PENDING: 'PENDING',
   REJECTED: 'REJECTED'
 };

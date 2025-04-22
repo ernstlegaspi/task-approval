@@ -199,6 +199,7 @@ exports.Prisma.NullsOrder = {
 };
 exports.TaskStatus = exports.$Enums.TaskStatus = {
   APPROVED: 'APPROVED',
+  EXPIRED: 'EXPIRED',
   PENDING: 'PENDING',
   REJECTED: 'REJECTED'
 };

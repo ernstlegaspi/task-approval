@@ -16,6 +16,7 @@ datasource db {
 
 enum TaskStatus {
   APPROVED
+  EXPIRED
   PENDING
   REJECTED
 }

@@ -5,7 +5,7 @@ import { BadRequest, Inserted, OK, ServerError } from "@/utils/http"
 import { NextRequest, NextResponse } from "next/server"
 import { updateTaskSchema } from "@/zod-schema"
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 	try {
 		const tasks = await prisma.task.findMany({
 			orderBy: {

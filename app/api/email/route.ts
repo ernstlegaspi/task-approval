@@ -1,5 +1,5 @@
-import { OK, ServerError } from "@/utils/http";
-import { NextRequest, NextResponse } from "next/server"
+import { OK, ServerError } from "@/utils/http"
+import { NextRequest } from "next/server"
 import nodemailer from "nodemailer"
 
 export async function POST(req: NextRequest) {

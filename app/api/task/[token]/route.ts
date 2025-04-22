@@ -1,6 +1,6 @@
 import { prisma } from "@/utils"
 import { BadRequest, NotFound, OK, ServerError } from "@/utils/http"
-import { NextRequest, NextResponse } from "next/server"
+import { NextRequest } from "next/server"
 
 export async function GET(req: NextRequest, { params }: { params: { token: string } }) {
 	try {

@@ -10,7 +10,7 @@ export default function Form() {
 		password: ""
 	})
 
-	const setValue = (key: string, value: any) => {
+	const setValue = (key: string, value: string) => {
 		setState(prev => ({ ...prev, [key]: value }))
 	}
 

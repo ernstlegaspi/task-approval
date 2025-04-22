@@ -3,11 +3,10 @@ import Credentials from "next-auth/providers/credentials"
 import NextAuth from "next-auth"
 
 import { PrismaAdapter } from "@auth/prisma-adapter"
-import { Prisma } from "@prisma/client"
 import { prisma } from "./utils"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-	adapter: PrismaAdapter(Prisma),
+	adapter: PrismaAdapter(prisma),
 	providers: [
 		Credentials({
 			name: "credentials",

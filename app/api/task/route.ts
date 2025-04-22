@@ -25,9 +25,7 @@ export async function POST(req: NextRequest) {
 		const body = await req.json()
 		const { assignedTo, description, title } = body as Task
 		const token = v4()
-		const tokenExpiration = new Date(Date.now() + 1000 * 60)
-		// const tokenExpiration = new Date(Date.now() + 1000 * 60 * 60 * 24)
-		console.log(`Token Expiration: ${tokenExpiration}`)
+		const tokenExpiration = new Date(Date.now() + 1000 * 60 * 5) // 5 minutes token expiration
 
 		if(!description || !title) return BadRequest()
 

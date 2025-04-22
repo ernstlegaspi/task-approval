@@ -6,6 +6,7 @@ import { useNewTaskStore } from "@/store/newTask"
 import { useState } from "react"
 import { IoCloseSharp, IoCheckmarkSharp } from "react-icons/io5"
 import { useTaskStore } from "@/store/task"
+import { isValidEmail } from "@/utils/utils"
 
 const inputClass = "border-b border-white w-[15%] outline-none text-white p-2"
 
@@ -46,7 +47,17 @@ export default function NewTaskCard() {
 				}
 			)
 
-			const newTask = res?.data?.data
+			const newTask: Task = res?.data?.data
+
+			if(state.assignedTo && isValidEmail(state.assignedTo)) {
+				await axios.post("/api/email", {
+					assignedUserEmail: state.assignedTo,
+					token: newTask.token
+				})
+
+				alert(newTask.token)
+				alert(state.assignedTo)
+			}
 
 			setState(prev => ({
 				...prev,
@@ -63,7 +74,8 @@ export default function NewTaskCard() {
 				id: newTask?.id,
 				status: newTask.status,
 				title: state.title,
-				token: newTask.token
+				token: newTask.token,
+				tokenExpiration: newTask.tokenExpiration
 			})
 
 			setTasks(tasksHolder.reverse())
@@ -98,7 +110,7 @@ export default function NewTaskCard() {
 			"
 		/>
 
-		<Text text="Pending" />
+		<Text text="PENDING" />
 		<Text text="" />
 		<Text text="" />
 

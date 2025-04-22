@@ -16,3 +16,9 @@ export const convertDate = (date: Date) => {
 
 	return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
 }
+
+export const isValidEmail = (email: string) => {
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+	return emailRegex.test(email)
+}

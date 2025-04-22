@@ -2,7 +2,7 @@
 
 import axios from "axios"
 
-import { convertDate } from "@/utils/utils"
+import { convertDate, isValidEmail } from "@/utils/utils"
 import { useEffect, useState } from "react"
 import { IoCloseSharp, IoCheckmarkSharp } from "react-icons/io5"
 import { MdDelete, MdEdit } from "react-icons/md"
@@ -41,23 +41,11 @@ export default function TaskCard({ task }: { task: Task }) {
 		setValue("title", state.title)
 	}
 
-	const isValidEmail = (email: string) => {
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-		return emailRegex.test(email)
-	}
-
 	const editTask = async () => {
-		console.log(tokenExpiration)
 		const expirationDate = new Date(tokenExpiration)
 		const currentDate = new Date()
 		const isExpired = currentDate > expirationDate
 
-		console.log(expirationDate)
-		console.log(currentDate)
-		
-		alert(isExpired)
-		
 		if(isExpired) {
 			setValue("status", TaskStatus.EXPIRED)
 			setValue("isEditing", false)

@@ -35,4 +35,5 @@ EMAIL_PASS = put_the_app_password
 9. axios (used for HTTP requests)
 10. Typescript (typesafety)
 
-<h1><strong>Sadly, this is all I can offer. I can not make the project live, tried multiple ways to deploy this project to vercel, unfortunately, there is an issue regarding Next.js and prisma</strong></h1>
+<h1><strong>Sadly, this is all I can offer. I can not make the project live, tried multiple ways to deploy this project to Vercel, unfortunately, there is an issue regarding Next.js and Prisma</strong></h1>
+<p>Assuming that the setup for this project on your local machine is done, all requirements and features are met. Thank you!</p>

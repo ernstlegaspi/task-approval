@@ -1,9 +1,9 @@
-import { TaskStatus } from "@/prisma/generated/prisma"
 import { v4 } from "uuid"
 import { prisma } from "@/utils"
 import { BadRequest, Inserted, OK, ServerError } from "@/utils/http"
 import { NextRequest, NextResponse } from "next/server"
 import { updateTaskSchema } from "@/zod-schema"
+import { TaskStatus } from "@prisma/client"
 
 export async function GET() {
 	try {

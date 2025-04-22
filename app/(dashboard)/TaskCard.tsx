@@ -8,7 +8,7 @@ import { IoCloseSharp, IoCheckmarkSharp } from "react-icons/io5"
 import { MdDelete, MdEdit } from "react-icons/md"
 import { updateTaskSchema } from "@/zod-schema"
 import { toast } from 'react-toastify'
-import { TaskStatus } from "@/prisma/generated/prisma"
+import { TaskStatus } from "@prisma/client"
 
 const inputClass = "border-b border-white w-[15%] outline-none text-white p-2"
 

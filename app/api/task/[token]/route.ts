@@ -2,9 +2,9 @@ import { prisma } from "@/utils"
 import { BadRequest, NotFound, OK, ServerError } from "@/utils/http"
 import { NextRequest } from "next/server"
 
-export async function GET(req: NextRequest, { params }: { params: { token: string } }) {
+export async function GET(req: NextRequest, context: { params: Promise<{ token: string }> }) {
 	try {
-		const token = params.token
+		const { token } = await context.params
 
 		if(!token) return BadRequest()
 

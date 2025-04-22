@@ -7,6 +7,7 @@ import { useState } from "react"
 import { IoCloseSharp, IoCheckmarkSharp } from "react-icons/io5"
 import { useTaskStore } from "@/store/task"
 import { isValidEmail } from "@/utils/utils"
+import { toast } from 'react-toastify'
 
 const inputClass = "border-b border-white w-[15%] outline-none text-white p-2"
 
@@ -54,9 +55,6 @@ export default function NewTaskCard() {
 					assignedUserEmail: state.assignedTo,
 					token: newTask.token
 				})
-
-				alert(newTask.token)
-				alert(state.assignedTo)
 			}
 
 			setState(prev => ({
@@ -80,7 +78,7 @@ export default function NewTaskCard() {
 
 			setTasks(tasksHolder.reverse())
 
-			alert("task created successfully")
+			toast("task created successfully")
 		}
 		catch(e) {
 			console.log(`Error in client: ${e}`)

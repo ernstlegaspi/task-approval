@@ -5,6 +5,7 @@ import axios from "axios"
 
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
+import { toast } from 'react-toastify'
 import { ClipLoader } from "react-spinners"
 
 export default function TaskPage() {
@@ -69,7 +70,7 @@ export default function TaskPage() {
 		}
 		catch(e) {
 			const err: Error = e as Error
-			alert(err.message)
+			toast(err.message)
 		}
 	}
 
@@ -84,7 +85,7 @@ export default function TaskPage() {
 		}
 		catch(e) {
 			const err: Error = e as Error
-			alert(err.message)
+			toast(err.message)
 		}
 	}
 

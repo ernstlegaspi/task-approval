@@ -2,19 +2,26 @@ import bcrypt from "bcryptjs"
 
 import { prisma } from "@/utils"
 import { NextRequest, NextResponse } from "next/server"
+import { ServerError } from "@/utils/http"
 
 export async function POST(req: NextRequest) {
-	const body = await req.json()
-	const { email, password } = body
-
-	const hashedPassword = await bcrypt.hash(password, 10)
+	try {
+		const body = await req.json()
+		const { email, password } = body
 	
-	await prisma.user.create({
-		data: {
-			email,
-			password: hashedPassword
-		}
-	})
-
-	return NextResponse.json({ message: "Success" })
+		const hashedPassword = await bcrypt.hash(password, 10)
+		
+		await prisma.user.create({
+			data: {
+				email,
+				password: hashedPassword
+			}
+		})
+	
+		return NextResponse.json({ message: "Success" })
+	}
+	catch(e) {
+		console.log(e)
+		return ServerError(e as Error)
+	}
 }

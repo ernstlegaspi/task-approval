@@ -8,6 +8,7 @@ import { IoCloseSharp, IoCheckmarkSharp } from "react-icons/io5"
 import { MdDelete, MdEdit } from "react-icons/md"
 import { updateTaskSchema } from "@/zod-schema"
 import { TaskStatus } from "@/generated/prisma"
+import { toast } from 'react-toastify'
 
 const inputClass = "border-b border-white w-[15%] outline-none text-white p-2"
 
@@ -62,13 +63,13 @@ export default function TaskCard({ task }: { task: Task }) {
 			})
 
 			if(!res.success) {
-				alert("All fields are required.")
+				toast("All fields are required.")
 				return
 			}
 
 			if(state.assignedTo) {
 				if(!isValidEmail(state.assignedTo)) {
-					alert("Please enter a valid email.")
+					toast("Please enter a valid email.")
 					return
 				}
 
@@ -85,7 +86,7 @@ export default function TaskCard({ task }: { task: Task }) {
 					})
 				])
 
-				alert("Task assigned.")
+				toast("Task assigned.")
 
 				return
 			}
@@ -97,14 +98,14 @@ export default function TaskCard({ task }: { task: Task }) {
 				title: state.title,
 			})
 
-			alert(response.data.data.message)
+			toast(response.data.data.message)
 		}
 		catch(e) {
 			const err: Error = e as Error
 
 			defaultValue()
 
-			alert(err.message)
+			toast(err.message)
 		}
 		finally {
 			setValue("isEditing", false)
@@ -132,13 +133,13 @@ export default function TaskCard({ task }: { task: Task }) {
 
 			await axios.delete(`/api/task/${token}`)
 
-			alert("Task deleted successfully.")
+			toast("Task deleted successfully.")
 		}
 		catch(e) {
 			const err: Error = e as Error
 
 			setValue("deleteButtonClicked", false)
-			alert(err.message)
+			toast(err.message)
 		}
 	}
 

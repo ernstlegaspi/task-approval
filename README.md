@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Github Repo link: https://github.com/ernstlegaspi/task-approval
 
-## Getting Started
+# Setup
 
-First, run the development server:
+1. git clone https://github.com/ernstlegaspi/task-approval.git
+2. npm install
+3. create a .env file in the root directory
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# env variables:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+DATABASE_URL="postgresql://postgres:zlCxHXZzqGKJzIJEUvECNktNAsQUIDwJ@shortline.proxy.rlwy.net:54824/railway"
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+AUTH_SECRET="DGfmJrmfwlBEGrDoPvpNv+Il7QvE/l0XUPhVVB8Anys="
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+EMAIL_USER = put_your_email_here
+EMAIL_PASS = put_the_app_password
 
-## Learn More
+# generate app password using google
 
-To learn more about Next.js, take a look at the following resources:
+1. Login to your google account
+2. Click manage your google account
+3. Search for App Passwords
+4. Create your app and generate your password
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# TECH STACK USED
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Next.js and Next.js API Routes
+2. Postgresql (database)
+3. Prisma (ORM)
+4. Tailwind CSS (styling)
+5. Zustand (state management)
+6. Next-auth (authentication)
+7. zod (data validation)
+8. nodemailer (sending emails)
+9. axios (used for HTTP requests)
+10. Typescript (typesafety)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<h1><strong>Sadly, this is all I can offer. I can not make the project live, tried multiple ways to deploy this project to vercel, unfortunately, there is an issue regarding Next.js and prisma</strong></h1>

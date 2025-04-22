@@ -82,7 +82,8 @@ export default function TaskCard({ task }: { task: Task }) {
 					}),
 					axios.post("/api/email", {
 						assignedUserEmail: state.assignedTo,
-						token
+						token,
+						taskTitle: state.title
 					})
 				])
 

@@ -4,7 +4,7 @@ import nodemailer from "nodemailer"
 
 export async function POST(req: NextRequest) {
 	try {
-		const { assignedUserEmail, token } = await req.json()
+		const { assignedUserEmail, taskTitle, token } = await req.json()
 
 		const transporter = nodemailer.createTransport({
 			service: 'gmail',
@@ -19,10 +19,10 @@ export async function POST(req: NextRequest) {
 		await transporter.sendMail({
 			from: process.env.EMAIL_USER,
 			to: assignedUserEmail,
-			subject: "Task assigned to you",
+			subject: "Task Approval Request",
 			html: `<html>
 				<body>
-					<p>Task has been assigned to you. Please click this link to respond: <a href="${BASE_URL}/${token}">Task Link</a></p>
+					<p>You have a new task: ${taskTitle}. Please review and respond using this link: <a href="${BASE_URL}/${token}">Task Link</a></p>
 				</body>
 			</html>`,
 		})

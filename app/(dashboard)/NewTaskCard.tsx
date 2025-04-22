@@ -53,7 +53,8 @@ export default function NewTaskCard() {
 			if(state.assignedTo && isValidEmail(state.assignedTo)) {
 				await axios.post("/api/email", {
 					assignedUserEmail: state.assignedTo,
-					token: newTask.token
+					token: newTask.token,
+					taskTitle: state.title
 				})
 			}
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { TaskStatus } from "@/generated/prisma"
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -69,8 +69,13 @@ export default function TaskPage() {
 			setValue("buttonClicked", "approve")
 		}
 		catch(e) {
-			const err: Error = e as Error
-			toast(err.message)
+			const err: AxiosError = e as AxiosError
+
+			if(!err.response) return
+
+			const data = err.response.data as { message: string }
+
+			toast(data.message)
 		}
 	}
 
@@ -84,8 +89,13 @@ export default function TaskPage() {
 			setValue("buttonClicked", "reject")
 		}
 		catch(e) {
-			const err: Error = e as Error
-			toast(err.message)
+			const err: AxiosError = e as AxiosError
+
+			if(!err.response) return
+
+			const data = err.response.data as { message: string }
+
+			toast(data.message)
 		}
 	}
 

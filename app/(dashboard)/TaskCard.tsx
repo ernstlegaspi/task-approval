@@ -1,6 +1,6 @@
 "use client"
 
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 
 import { convertDate, isValidEmail } from "@/utils/utils"
 import { useEffect, useState } from "react"
@@ -101,11 +101,15 @@ export default function TaskCard({ task }: { task: Task }) {
 			toast(response.data.data.message)
 		}
 		catch(e) {
-			const err: Error = e as Error
-
 			defaultValue()
 
-			toast(err.message)
+			const err: AxiosError = e as AxiosError
+
+			if(!err.response) return
+
+			const data = err.response.data as { message: string }
+
+			toast(data.message)
 		}
 		finally {
 			setValue("isEditing", false)
@@ -136,10 +140,15 @@ export default function TaskCard({ task }: { task: Task }) {
 			toast("Task deleted successfully.")
 		}
 		catch(e) {
-			const err: Error = e as Error
-
 			setValue("deleteButtonClicked", false)
-			toast(err.message)
+
+			const err: AxiosError = e as AxiosError
+
+			if(!err.response) return
+
+			const data = err.response.data as { message: string }
+
+			toast(data.message)
 		}
 	}
 

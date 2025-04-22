@@ -1,6 +1,6 @@
 "use client"
 
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 
 import { loginSchema } from "@/zod-schema"
 import { ChangeEvent, FormEvent, useState } from "react"
@@ -40,9 +40,13 @@ export default function Form() {
 			window.location.href = "/"
 		}
 		catch(e) {
-			const err: Error = e as Error
+			const err: AxiosError = e as AxiosError
 
-			toast(err.message)
+			if(!err.response) return
+
+			const data = err.response.data as { message: string }
+
+			toast(data.message)
 		}
 	}
 
@@ -75,9 +79,13 @@ export default function Form() {
 			toast("Registered successfully.")
 		}
 		catch(e) {
-			const err: Error = e as Error
+			const err: AxiosError = e as AxiosError
 
-			toast(err.message)
+			if(!err.response) return
+
+			const data = err.response.data as { message: string }
+
+			toast(data.message)
 		}
 	}
 

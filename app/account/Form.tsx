@@ -77,6 +77,9 @@ export default function Form() {
 			})
 
 			toast("Registered successfully.")
+
+			setValue("registerEmail", "")
+			setValue("registerPassword", "")
 		}
 		catch(e) {
 			const err: AxiosError = e as AxiosError

@@ -1,3 +1,4 @@
+Live url: https://task-approval.vercel.app/
 Github Repo link: https://github.com/ernstlegaspi/task-approval
 
 # Setup
@@ -35,5 +36,16 @@ EMAIL_PASS = put_the_app_password
 9. axios (used for HTTP requests)
 10. Typescript (typesafety)
 
-<h1><strong>Sadly, this is all I can offer. I can not make the project live, tried multiple ways to deploy this project to Vercel, unfortunately, there is an issue regarding Next.js and Prisma</strong></h1>
-<p>Assuming that the setup for this project on your local machine is done, all requirements and features are met. Thank you!</p>
+# Steps
+
+1. Register as a manager
+2. Login as a manager
+3. Create task
+4. Input title, description, and assigned to (optional at first)
+5. Assign a member if null
+6. Member can approve or reject the link
+
+# Application Routes
+
+1. /
+2. /account

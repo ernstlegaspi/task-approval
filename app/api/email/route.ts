@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 			}
 		})
 
-		const BASE_URL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "http://localhost:3000"
+		const BASE_URL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://task-approval.vercel.app/"
 
 		await transporter.sendMail({
 			from: process.env.EMAIL_USER,
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 			subject: "Task Approval Request",
 			html: `<html>
 				<body>
-					<p>You have a new task: ${taskTitle}. Please review and respond using this link: <a href="${BASE_URL}/${token}">Task Link</a></p>
+					<p>You have a new task: ${taskTitle}. Please review and respond using this link: <a href="${BASE_URL}/${token}">${BASE_URL}/${token}</a></p>
 				</body>
 			</html>`,
 		})

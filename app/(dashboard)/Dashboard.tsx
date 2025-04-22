@@ -11,8 +11,8 @@ export default function Dashboard() {
 				<LogoutButton />
 			</div>
 
-			<div className="overflow-x-scroll">
-				<div className="rounded-sm bg-[#1a1a1a] p-3 mt-4 w-[1920px] max-[1280px]:w-[1600px]">
+			<div className="overflow-x-scroll mt-4 w-full bg-[#1a1a1a]">
+				<div className="rounded-sm p-3 w-[1920px] max-[1280px]:w-[1600px]">
 					<div className="flex text-white">
 						<div className=" py-2 w-[15%] pl-2">Task Title</div>
 						<div className=" py-2 w-[15%] ml-1 pl-2">Task Description</div>

@@ -52,9 +52,9 @@ export async function PUT(req: NextRequest) {
 	}
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { token: string } }) {
+export async function DELETE(req: NextRequest, context: { params: Promise<{ token: string }> }) {
 	try {
-		const token = params.token
+		const { token } = await context.params
 
 		if(!token) return BadRequest()
 

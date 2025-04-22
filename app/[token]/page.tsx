@@ -1,6 +1,6 @@
 "use client"
 
-import { TaskStatus } from "@/generated/prisma"
+import { TaskStatus } from "@/prisma/generated/prisma"
 import axios, { AxiosError } from "axios"
 
 import { usePathname } from "next/navigation"

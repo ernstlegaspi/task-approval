@@ -1,4 +1,4 @@
-import { TaskStatus } from "@/generated/prisma"
+import { TaskStatus } from "@/prisma/generated/prisma"
 import { v4 } from "uuid"
 import { prisma } from "@/utils"
 import { BadRequest, Inserted, OK, ServerError } from "@/utils/http"
